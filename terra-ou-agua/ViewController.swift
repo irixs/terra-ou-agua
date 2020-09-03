@@ -19,7 +19,8 @@ class ViewController: UIViewController {
         //gerar duas coordenadas aleatorias
         let cordinates = randomCordinates()
         print(cordinates)
-        searchLand()
+        
+        searchLand(cordinates: cordinates)
     }
     
     override func viewDidLoad() {
@@ -33,19 +34,24 @@ class ViewController: UIViewController {
     override var shouldAutorotate: Bool {
         return true
     }
-    func randomCordinates () -> [Double] {
+    func randomCordinates () -> String {
         let latitudeLong = Double.random(in: -90.0...90.0)
         let longitudeLong = Double.random(in: -90.0...90.0)
         
         let latitude = Double(round(1000*latitudeLong)/1000)
         let longitude = Double(round(1000*longitudeLong)/1000)
         
-        return [latitude,longitude]
+        let lat = String(latitude)
+        let lon = String (longitude)
+        
+        return lat+","+lon
     
     }
-    func searchLand() {
+    func searchLand(cordinates: String) {
         //let coordinates = "79.582, -9.137"
-        let UrlString = "\(baseUrlString)79.582,-9.137"
+        
+        let UrlString = "\(baseUrlString)"+cordinates
+        print(UrlString)
         let Url = URL(string: UrlString)!
         let session = URLSession.shared
         let task = session.dataTask(with: Url) { data, response, error in
@@ -63,12 +69,15 @@ class ViewController: UIViewController {
                     print(self.onWater.water)
                     print(self.onWater.lat)
                     print(self.onWater.lon)
-                    //self.tableView.reloadData()
+                   
                 }
             } catch {
                 print("JSON Error: \(error.localizedDescription)")
                 DispatchQueue.main.async {
                  // aqui a gente coloca o caso default pra quando aconteça algum erro
+                    self.onWater.water = true
+                    print(self.onWater.water)
+                    print("ERROOOOR")
                 }
             }
         }
