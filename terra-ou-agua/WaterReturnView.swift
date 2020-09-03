@@ -1,48 +1,26 @@
 //
-//  ViewController.swift
+//  Water.swift
 //  terra-ou-agua
 //
-//  Created by Íris Soares on 02/09/20.
+//  Created by Hugo Santos on 03/09/20.
 //  Copyright © 2020 Apple Academy UFPE. All rights reserved.
 //
 
 import UIKit
 
+class WaterReturnViewController: UITableViewController {
 
-
-
-class ViewController: UIViewController {
+   // var onWater: [WaterE] = []
     var onWater = WaterE(query: "", requestId: "", lat: 0.00, lon: 0.00, water: false)
     let baseUrlString = "https://api.onwater.io/api/v1/results/"
     
-    @IBAction func dicesButton(_ sender: UIButton) {
-        //gerar duas coordenadas aleatorias
-        let cordinates = randomCordinates()
-        print(cordinates)
-        searchLand()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let value = UIInterfaceOrientation.landscapeRight.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
+        self.searchLand()
     }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .landscapeRight
-    }
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    func randomCordinates () -> [Double] {
-        let latitudeLong = Double.random(in: -90.0...90.0)
-        let longitudeLong = Double.random(in: -90.0...90.0)
-        
-        let latitude = Double(round(1000*latitudeLong)/1000)
-        let longitude = Double(round(1000*longitudeLong)/1000)
-        
-        return [latitude,longitude]
+
     
-    }
+    /// Carrega os dados do webservice  AQUI
     func searchLand() {
         //let coordinates = "79.582, -9.137"
         let UrlString = "\(baseUrlString)79.582,-9.137"
@@ -63,7 +41,7 @@ class ViewController: UIViewController {
                     print(self.onWater.water)
                     print(self.onWater.lat)
                     print(self.onWater.lon)
-                    //self.tableView.reloadData()
+                    self.tableView.reloadData()
                 }
             } catch {
                 print("JSON Error: \(error.localizedDescription)")
@@ -75,5 +53,29 @@ class ViewController: UIViewController {
         
         task.resume()
     }
+    
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return films.count
+//    }
+    
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Studio Ghibli Films"
+//    }
 
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! FilmTableViewCell
+//
+//        // configura a célula   AQUI
+//        let film = films[indexPath.row]
+//        cell.textLabel?.text = film.title
+//
+//        return cell
+//    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showFilm", case let nextVC = segue.destination as? FilmViewController {
+//            nextVC?.film = films[tableView.indexPathForSelectedRow!.row]
+//        }
+//    }
 }
+
