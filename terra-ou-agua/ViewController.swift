@@ -8,19 +8,29 @@
 
 import UIKit
 
-
-
-
 class ViewController: UIViewController {
     var onWater = WaterE(query: "", requestId: "", lat: 0.00, lon: 0.00, water: false)
     let baseUrlString = "https://api.onwater.io/api/v1/results/"
     var caminho = [false,false,false,false,false,false]
+    
+ @IBAction func showAlertButtonTapped(_ sender: UIButton) {
+
+        // create the alert
+        let alert = UIAlertController(title: "My Title", message: "This is my message.", preferredStyle: UIAlertController.Style.alert)
+
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+    }
     
     @IBAction func dicesButton(_ sender: UIButton) {
         //gerar duas coordenadas aleatorias
         let cordinates = randomCordinates()
         searchLand(cordinates: cordinates)
         treasurePath(isOnWater: self.onWater.water)
+        print(onWater.water)
     }
     
     @IBOutlet weak var caminho1: UIImageView!
@@ -83,31 +93,56 @@ class ViewController: UIViewController {
         task.resume()
     }
     func treasurePath(isOnWater: Bool) {
-        if isOnWater == false {
+        if isOnWater == true{
+            let alert = UIAlertController(title: "Deu Ruim, MArujo!!", message: "Tu vai ter que beber o mar todinhooo", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else if isOnWater == false {
             if caminho[0] == false{
                 caminho1.isHidden = false
                 caminho[0] = true
+                
+                let alert = UIAlertController(title: "Deu Sorte, MArujo!!", message: "Voce encontrou terra firme, AVANCE UMA CASA", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
             else if caminho[1] == false{
                 caminho2.isHidden = false
                 caminho[1] = true
+                let alert = UIAlertController(title: "FALA MArujo!!", message: "Voce encontrou terra firme, AVANCE UMA CASA", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
             else if caminho[2] == false{
                 caminho3.isHidden = false
                 caminho[2] = true
+                let alert = UIAlertController(title: "FALA MArujo!!", message: "Voce encontrou terra firme, AVANCE UMA CASA", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
             else if caminho[3] == false{
                 caminho4.isHidden = false
                 caminho[3] = true
+                let alert = UIAlertController(title: "FALA MArujo!!", message: "Voce encontrou terra firme, AVANCE UMA CASA", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
             else if caminho[4] == false{
                 caminho5.isHidden = false
                 caminho[4] = true
+                let alert = UIAlertController(title: "FALA MArujo!!", message: "Voce encontrou terra firme, AVANCE UMA CASA", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
             else if caminho[5] == false{
                 caminho6.isHidden = false
                 caminho[5] = true
+                let alert = UIAlertController(title: "FALA MArujo!!", message: "TU GANHOU CARAAAIN! Achasse o barriu cheeio de cachaça", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
+
         }
     }
 }
