@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C1E14E02500965C004AC575 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E14DF2500965C004AC575 /* Water.swift */; };
+		2C1E14E62501713B004AC575 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1E14E52501713B004AC575 /* PopUp.swift */; };
 		F0544C6D250025CF00D4DF27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0544C6C250025CF00D4DF27 /* AppDelegate.swift */; };
 		F0544C6F250025CF00D4DF27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0544C6E250025CF00D4DF27 /* SceneDelegate.swift */; };
 		F0544C71250025CF00D4DF27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0544C70250025CF00D4DF27 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		2C1E14DF2500965C004AC575 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
+		2C1E14E52501713B004AC575 /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		F0544C69250025CF00D4DF27 /* terra-ou-agua.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "terra-ou-agua.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0544C6C250025CF00D4DF27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0544C6E250025CF00D4DF27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				F0544C6C250025CF00D4DF27 /* AppDelegate.swift */,
 				F0544C6E250025CF00D4DF27 /* SceneDelegate.swift */,
+				2C1E14E52501713B004AC575 /* PopUp.swift */,
 				2C1E14DF2500965C004AC575 /* Water.swift */,
 				F0544C70250025CF00D4DF27 /* ViewController.swift */,
 				F0544C72250025CF00D4DF27 /* Main.storyboard */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0544C71250025CF00D4DF27 /* ViewController.swift in Sources */,
+				2C1E14E62501713B004AC575 /* PopUp.swift in Sources */,
 				2C1E14E02500965C004AC575 /* Water.swift in Sources */,
 				F0544C6D250025CF00D4DF27 /* AppDelegate.swift in Sources */,
 				F0544C6F250025CF00D4DF27 /* SceneDelegate.swift in Sources */,
