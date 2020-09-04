@@ -14,14 +14,21 @@ import UIKit
 class ViewController: UIViewController {
     var onWater = WaterE(query: "", requestId: "", lat: 0.00, lon: 0.00, water: false)
     let baseUrlString = "https://api.onwater.io/api/v1/results/"
+    var caminho = [false,false,false,false,false,false]
     
     @IBAction func dicesButton(_ sender: UIButton) {
         //gerar duas coordenadas aleatorias
         let cordinates = randomCordinates()
-        print(cordinates)
-        
         searchLand(cordinates: cordinates)
+        treasurePath(isOnWater: self.onWater.water)
     }
+    
+    @IBOutlet weak var caminho1: UIImageView!
+    @IBOutlet weak var caminho2: UIImageView!
+    @IBOutlet weak var caminho3: UIImageView!
+    @IBOutlet weak var caminho4: UIImageView!
+    @IBOutlet weak var caminho5: UIImageView!
+    @IBOutlet weak var caminho6: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +41,7 @@ class ViewController: UIViewController {
     override var shouldAutorotate: Bool {
         return true
     }
-    func randomCordinates () -> String {
+    func randomCordinates() -> String {
         let latitudeLong = Double.random(in: -90.0...90.0)
         let longitudeLong = Double.random(in: -90.0...90.0)
         
@@ -48,10 +55,8 @@ class ViewController: UIViewController {
     
     }
     func searchLand(cordinates: String) {
-        //let coordinates = "79.582, -9.137"
-        
+
         let UrlString = "\(baseUrlString)"+cordinates
-        print(UrlString)
         let Url = URL(string: UrlString)!
         let session = URLSession.shared
         let task = session.dataTask(with: Url) { data, response, error in
@@ -65,24 +70,44 @@ class ViewController: UIViewController {
                     self.onWater.requestId = jsonData.requestId
                     self.onWater.lat = jsonData.lat
                     self.onWater.lon = jsonData.lon
-                    
-                    print(self.onWater.water)
-                    print(self.onWater.lat)
-                    print(self.onWater.lon)
-                   
+                    print("foi")
                 }
             } catch {
                 print("JSON Error: \(error.localizedDescription)")
                 DispatchQueue.main.async {
                  // aqui a gente coloca o caso default pra quando aconteça algum erro
                     self.onWater.water = true
-                    print(self.onWater.water)
-                    print("ERROOOOR")
                 }
             }
         }
-        
         task.resume()
     }
-
+    func treasurePath(isOnWater: Bool) {
+        if isOnWater == false {
+            if caminho[0] == false{
+                caminho1.isHidden = false
+                caminho[0] = true
+            }
+            else if caminho[1] == false{
+                caminho2.isHidden = false
+                caminho[1] = true
+            }
+            else if caminho[2] == false{
+                caminho3.isHidden = false
+                caminho[2] = true
+            }
+            else if caminho[3] == false{
+                caminho4.isHidden = false
+                caminho[3] = true
+            }
+            else if caminho[4] == false{
+                caminho5.isHidden = false
+                caminho[4] = true
+            }
+            else if caminho[5] == false{
+                caminho6.isHidden = false
+                caminho[5] = true
+            }
+        }
+    }
 }
